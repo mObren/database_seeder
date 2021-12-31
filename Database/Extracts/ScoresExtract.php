@@ -1,13 +1,13 @@
 <?php
 
+namespace Database\Extracts;
 
 class ScoresExtract
 {
-    protected $filePath = "../../csv-files/genome-scores.csv";
+    protected $filePath = CSV_FILES . "genome-scores.csv";
     public $tableName = "scores";
     public $columns = ['movie_id', 'tag_id', 'relevance'];
     public $batch = 50000;
-
 
     public function getFileContent() {
         return file($this->filePath);
@@ -15,7 +15,6 @@ class ScoresExtract
     public function total() {
         return count($this->getFileContent());
     }
-
     public function prepareData($from, $to, $file) {
         $args = [];
         $string = '';

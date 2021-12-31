@@ -1,9 +1,10 @@
 <?php
+namespace Database\Extracts;
 
 class MoviesExtract {
 
 
-    protected $filePath = "../../csv-files/movies.csv";
+    protected $filePath = CSV_FILES . "movies.csv";
     public $tableName = "movies";
     public $columns = ['id', 'title', 'year'];
     public $batch = 5000;

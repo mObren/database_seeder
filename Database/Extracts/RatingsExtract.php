@@ -1,21 +1,16 @@
 <?php
+namespace Database\Extracts;
 
 class RatingsExtract {
 
 
-    protected $filePath = "../../csv-files/ratings.csv";
+    protected $filePath = CSV_FILES . "ratings.csv";
     public $tableName = "ratings";
     public $columns = ['user_id', 'movie_id', 'rating', "timestamp"];
-    public $batch = 1000;
+    public $batch = 50000;
 
     public function getFileContent() {
-        $fileHandle = fopen($this->filePath, "r");
-        $ratings = [];
-        while(!feof($fileHandle)) {
-            $ratings[] = fgets($fileHandle);
-        }
-        fclose($fileHandle);
-        return $ratings;
+        return file($this->filePath);
     }
     public function total() {
         return count($this->getFileContent());

@@ -1,12 +1,16 @@
 <?php
 
-
-require "../vendor/autoload.php";
 use Database\Seeders\Seeder;
+use Database\TablesCreator;
 
+require_once realpath("vendor/autoload.php");
+require_once "Config/config.php";
 
 ini_set('max_execution_time', '0');
+ini_set('memory_limit', '4G');
 
+$tables = new TablesCreator();
+$tables->createTables();
 $seeder = new Seeder();
 
 $classes = [

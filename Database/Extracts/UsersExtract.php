@@ -1,30 +1,20 @@
 <?php
-require_once '../../vendor/autoload.php';
-
+namespace Database\Extracts;
+use Faker\Factory;
 class UsersExtract
 {
 
-    protected $filePath = "../../csv-files/ratings.csv";
+    protected $filePath = CSV_FILES . "ratings.csv";
     public $tableName = "users";
     public $columns = ['id', 'name', 'gender', 'bio', 'email', 'password', 'age', 'avatar'];
-    public $batch = 200000;
+    public $batch = 30000;
     
-
-       public function getFileContent() {
-
-        $fileHandle = fopen($this->filePath, "r");
-        $ratings = [];
-        while(!feof($fileHandle)) {
-            $ratings[] = fgets($fileHandle);
-        }
-        fclose($fileHandle);
-        return $ratings;
+    public function getFileContent() {
+        return file($this->filePath);
     }
-
     public function total() {
         return count($this->getFileContent());
     }
-
     public function prepareData($from, $to, $file) {
         $args = [];
         $string = '';
@@ -35,7 +25,7 @@ class UsersExtract
                 }
         }
             $genders = ['m', 'f', 'x'];
-            $faker = Faker\Factory::create();
+            $faker = Factory::create();
 
             foreach ($userIds as $id) {
                 if (!empty($id)) {
@@ -49,7 +39,6 @@ class UsersExtract
                     . "'" . "banana" . "'),";
                 }
               
-
             }
         $string = rtrim($string, ",");
         return $string .= implode("),(", $args);

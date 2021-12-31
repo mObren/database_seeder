@@ -3,6 +3,8 @@
 
   define("APPLICATON_NAME", "Movie ratings");
 
+  define("CSV_FILES", $_SERVER['DOCUMENT_ROOT'] . "/app/csv-files/");
+
 
  /**
   * Database credentials.

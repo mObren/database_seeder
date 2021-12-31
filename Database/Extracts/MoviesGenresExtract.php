@@ -1,9 +1,12 @@
 <?php
-require_once "GenresExtract.php";
+
+namespace Database\Extracts;
+
+use Database\Extracts\GenresExtract;
 
 class MoviesGenresExtract
 {
-    protected $filePath = "../../csv-files/movies.csv";
+    protected $filePath = CSV_FILES . "movies.csv";
     public $tableName = "movies_genres";
     public $columns = ['movie_id', 'genre_id'];
     public $batch = 5000;
@@ -27,7 +30,7 @@ class MoviesGenresExtract
                 if (str_contains($file[$i], $genre)) {
                     $string.= "(".strstr($file[$i], ',', true) . ',' . $key + 1 ."),";
                 }
-        }
+            }
         }
         return $string = rtrim($string, ',');
     }

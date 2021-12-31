@@ -1,6 +1,6 @@
-    <?php 
+<?php 
+namespace Database;
 
-    require "config.php";
 
     class Database {
         private function db_connect() {
@@ -18,8 +18,6 @@
 
             $DB = $this->db_connect();
             $statement = $DB->prepare($query);
-            
-
             if (count($data) == 0) {
                 $statement = $DB->query($query);
                 $check = false;

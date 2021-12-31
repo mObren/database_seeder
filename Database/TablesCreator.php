@@ -1,8 +1,10 @@
-<?php 
+<?php
+namespace Database;
 
-$db = new Database;
+use Database\Database;
+class TablesCreator {
 
-$sql = 'CREATE TABLE if not exists movies
+    protected $query = 'CREATE TABLE if not exists movies
 (
     id         int auto_increment primary key,
     title      varchar(255)                         null,
@@ -116,5 +118,10 @@ CREATE TABLE if not exists ratings
            on update cascade on delete cascade
 );';
 
-$db->write($sql);
 
+public function createTables() {
+    $db = new Database;
+    $db->write($this->query);
+
+}
+}

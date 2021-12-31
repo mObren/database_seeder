@@ -1,9 +1,10 @@
 <?php
+namespace Database\Extracts;
 
 class TagsExtract {
 
 
-    protected $filePath = "../../csv-files/genome-tags.csv";
+    protected $filePath = CSV_FILES . "genome-tags.csv";
     public $tableName = "tags";
     public $columns = ['id', 'tag'];
     public $batch = 200;
@@ -15,7 +16,6 @@ class TagsExtract {
     public function total() {
         return count($this->getFileContent());
     }
-
     public function prepareData($from, $to, $file) {
         $string = '';
         for ($i = $from; $i <= $to; $i++) {
@@ -27,6 +27,6 @@ class TagsExtract {
         }
         $string = rtrim($string, ",");
         return $string;
-        }
+    }
 
 }
