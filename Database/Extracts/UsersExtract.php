@@ -34,9 +34,9 @@ class UsersExtract
                     "," . "'" .$genders[rand(0 , 2)] . "'" .
                     ',' . "'Hello.'" .
                     ',' . "'$faker->email'" . ',' .
-                    "'2224444'" .
+                    '"' . random_bytes(20) .'"' .
                     ',' . rand(7, 115) . ','
-                    . "'" . "banana" . "'),";
+                    . "'" . "image" . "'),";
                 }
               
             }
@@ -45,3 +45,7 @@ class UsersExtract
     }
 
 }
+
+
+$user = new UsersExtract;
+echo $user->tableName;

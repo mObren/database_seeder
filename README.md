@@ -1,4 +1,5 @@
-run composer require fzaninotto/faker
-run composer dump-autoload -o
+1. run composer require fzaninotto/faker
+2. run composer dump-autoload -o
+3. place folder named csv-files into main directory
 
-run db_seed.php
+4. run db_seed.php

@@ -28,7 +28,6 @@ $classes = [
 echo date("d/m/Y : H:i:s") . "\n";
 
 foreach ($classes as $class) {
-
     echo "Seeding " . strtolower(strstr($class, "Ex", true)) .  " table... \n";
     $seeder->seed($class);
     echo "Table " . strtolower(strstr($class, "Ex", true)) . " seeded sucessfully. \n";
