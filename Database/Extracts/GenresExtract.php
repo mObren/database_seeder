@@ -36,7 +36,6 @@ namespace Database\Extracts;
                 foreach($arr as $genres){
                 $onecolumn=explode("|", $genres);
                     foreach($onecolumn as $genre){
-                        //var_dump($genre);
                         if (!in_array(rtrim($genre), $arrgenres)) {
                         $arrgenres[] = rtrim($genre);
                         }

@@ -9,7 +9,6 @@ class TagsExtract {
     public $columns = ['id', 'tag'];
     public $batch = 200;
 
-
     public function getFileContent() {
         return file($this->filePath);
     }

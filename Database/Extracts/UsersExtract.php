@@ -34,18 +34,13 @@ class UsersExtract
                     "," . "'" .$genders[rand(0 , 2)] . "'" .
                     ',' . "'Hello.'" .
                     ',' . "'$faker->email'" . ',' .
-                    '"' . random_bytes(20) .'"' .
+                    "'" . bin2hex(random_bytes(20)) ."'" .
                     ',' . rand(7, 115) . ','
                     . "'" . "image" . "'),";
                 }
-              
             }
         $string = rtrim($string, ",");
         return $string .= implode("),(", $args);
     }
 
 }
-
-
-$user = new UsersExtract;
-echo $user->tableName;
